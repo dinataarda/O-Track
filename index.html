@@ -8,11 +8,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
 
         :root {
-            --bg-base: #09090b; /* Zinc 950 */
+            --bg-base: #09090b; 
             --surface: rgba(255, 255, 255, 0.03);
             --surface-hover: rgba(255, 255, 255, 0.06);
             --border: rgba(255, 255, 255, 0.08);
-            --accent: #06b6d4; /* Cyan */
+            --accent: #06b6d4; 
             --accent-glow: rgba(6, 182, 212, 0.4);
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
@@ -49,7 +49,12 @@
             max-width: 420px; 
             position: relative;
             z-index: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 95vh;
         }
+
+        .main-content { flex: 1; }
 
         /* --- ANIMATIONS --- */
         @keyframes fadeUp {
@@ -245,7 +250,7 @@
         .btn-main:hover { background: #e2e8f0; transform: translateY(-2px); box-shadow: 0 12px 25px rgba(255,255,255,0.1); }
         .btn-main:active { transform: scale(0.97) translateY(0); box-shadow: 0 5px 10px rgba(255,255,255,0.05); }
 
-        /* --- DASHBOARD SUMMARY (JS Injected) --- */
+        /* --- DASHBOARD SUMMARY --- */
         .history-section { margin-top: 40px; }
         
         .summary-card {
@@ -293,7 +298,7 @@
         .btn-export:active { transform: scale(0.95); }
         .btn-export svg { width: 14px; height: 14px; }
 
-        /* --- HISTORY ITEMS (JS Injected) --- */
+        /* --- HISTORY ITEMS --- */
         .history-item {
             background: transparent;
             border: 1px solid var(--border);
@@ -365,12 +370,24 @@
         }
         #toast svg { width: 16px; height: 16px; color: var(--accent); }
 
-        /* Empty state styling fixes */
         .main-card p {
             color: var(--text-dim) !important;
             font-size: 0.75rem !important;
             letter-spacing: 1px;
         }
+
+        /* --- WATERMARK FOOTER --- */
+        .watermark-footer {
+            text-align: center;
+            padding: 30px 0 20px 0;
+            color: var(--text-dim);
+            font-size: 0.7rem;
+            line-height: 1.6;
+            opacity: 0.6;
+            letter-spacing: 0.5px;
+            margin-top: auto;
+        }
+        .watermark-footer strong { color: var(--text-main); font-weight: 700; }
     </style>
 </head>
 <body>
@@ -381,49 +398,55 @@
     </div>
 
     <div class="container">
-        <header class="animate-fade-up">
-            <div class="header-left">
-                <h1>O-TRACK</h1>
-                <div id="weather" class="weather-widget">📡 Mengecek cuaca...</div>
-            </div>
-            <div class="header-right">
-                <button onclick="backupData()" class="btn-header" title="Backup Data">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"></path></svg>
-                </button>
-                <button onclick="triggerRestore()" class="btn-header" title="Restore Data">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"></path></svg>
-                </button>
-            </div>
-        </header>
+        <div class="main-content">
+            <header class="animate-fade-up">
+                <div class="header-left">
+                    <h1>O-TRACK</h1>
+                    <div id="weather" class="weather-widget">📡 Mengecek cuaca...</div>
+                </div>
+                <div class="header-right">
+                    <button onclick="backupData()" class="btn-header" title="Backup Data">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"></path></svg>
+                    </button>
+                    <button onclick="triggerRestore()" class="btn-header" title="Restore Data">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"></path></svg>
+                    </button>
+                </div>
+            </header>
 
-        <div class="main-card animate-fade-up delay-1">
-            <div class="label">Estimasi Saat Ini</div>
-            <div id="display-rp" class="total-display">Rp 0</div>
-            
-            <div class="settings-row">
-                <div id="badge-price" class="setting-badge" onclick="changePrice()">...</div>
-                <div id="badge-unit" class="setting-badge" onclick="changeUnit()">...</div>
+            <div class="main-card animate-fade-up delay-1">
+                <div class="label">Estimasi Saat Ini</div>
+                <div id="display-rp" class="total-display">Rp 0</div>
+                
+                <div class="settings-row">
+                    <div id="badge-price" class="setting-badge" onclick="changePrice()">...</div>
+                    <div id="badge-unit" class="setting-badge" onclick="changeUnit()">...</div>
+                </div>
+
+                <div class="input-group">
+                    <input type="number" id="input-qty" placeholder="0">
+                    <button id="btn-clear" class="btn-clear" onclick="resetInput()">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                    <div id="input-label" class="label" style="margin-top: 16px;">Jumlah...</div>
+                </div>
+
+                <button onclick="saveData()" class="btn-main">SIMPAN KE RIWAYAT</button>
             </div>
 
-            <div class="input-group">
-                <input type="number" id="input-qty" placeholder="0">
-                <button id="btn-clear" class="btn-clear" onclick="resetInput()">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-                <div id="input-label" class="label" style="margin-top: 16px;">Jumlah...</div>
+            <div class="history-section animate-fade-up delay-2" id="history-container">
             </div>
 
-            <button onclick="saveData()" class="btn-main">SIMPAN KE RIWAYAT</button>
+            <input type="file" id="file-restore" accept=".json" style="display: none;" onchange="restoreData(event)">
         </div>
 
-        <div class="history-section animate-fade-up delay-2" id="history-container">
-            </div>
-
-        <input type="file" id="file-restore" accept=".json" style="display: none;" onchange="restoreData(event)">
+        <div class="watermark-footer">
+            Built with precision by <strong>Ardadinata</strong>.<br>
+            Digital Strategy & Development 2026.
+        </div>
     </div>
 
     <script>
-        // TIDAK ADA PERUBAHAN LOGIKA DI BAWAH INI
         const input = document.getElementById('input-qty');
         const display = document.getElementById('display-rp');
         const container = document.getElementById('history-container');
@@ -437,6 +460,17 @@
         let currentPrice = parseInt(localStorage.getItem('otrack_price')) || 7200;
         let currentUnit = localStorage.getItem('otrack_unit') || 'Karung';
 
+        // XSS Sanitizer Function
+        function escapeHTML(str) {
+            return String(str).replace(/[&<>'"]/g, tag => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            }[tag]));
+        }
+
         updateSettingsDisplay();
         renderHistory();
         initWeather();
@@ -445,7 +479,7 @@
 
         function initWeather() {
             const cachedWeather = localStorage.getItem('otrack_weather');
-            if (cachedWeather) weatherEl.innerHTML = cachedWeather;
+            if (cachedWeather) weatherEl.innerText = cachedWeather; // pakai innerText biar aman
 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
@@ -454,7 +488,7 @@
                     { timeout: 5000 }
                 );
             } else {
-                weatherEl.innerHTML = "❌ GPS Off";
+                weatherEl.innerText = "❌ GPS Off";
             }
         }
 
@@ -472,16 +506,17 @@
                 else if (code >= 95) icon = '⛈️ Badai';
 
                 const weatherString = `${icon} • ${temp}°C`;
-                weatherEl.innerHTML = weatherString;
+                weatherEl.innerText = weatherString;
                 localStorage.setItem('otrack_weather', weatherString);
             } catch (error) {
-                if(!localStorage.getItem('otrack_weather')) weatherEl.innerHTML = "📡 Offline";
+                if(!localStorage.getItem('otrack_weather')) weatherEl.innerText = "📡 Offline";
             }
         }
 
         function updateSettingsDisplay() {
-            badgePrice.innerHTML = `Rp ${currentPrice.toLocaleString('id-ID')} / ${currentUnit}`;
-            badgeUnit.innerHTML = `Satuan: ${currentUnit}`;
+            // Pakai innerText biar gak rentan disisipi tag HTML
+            badgePrice.innerText = `Rp ${currentPrice.toLocaleString('id-ID')} / ${currentUnit}`;
+            badgeUnit.innerText = `Satuan: ${currentUnit}`;
             inputLabel.innerText = `Jumlah ${currentUnit}`;
         }
 
@@ -501,9 +536,15 @@
         }
 
         function changeUnit() {
-            const newUnit = prompt('Masukkan nama satuan baru (contoh: Kg, Pcs, Dus):', currentUnit);
+            const newUnit = prompt('Masukkan nama satuan baru (maks. 15 huruf, contoh: Kg, Dus):', currentUnit);
             if (newUnit !== null && newUnit.trim() !== "") {
-                currentUnit = newUnit.trim();
+                const trimmed = newUnit.trim();
+                // Validasi limit karakter
+                if (trimmed.length > 15) {
+                    alert('Satuan kepanjangan! Maksimal 15 karakter.');
+                    return;
+                }
+                currentUnit = trimmed;
                 localStorage.setItem('otrack_unit', currentUnit);
                 updateSettingsDisplay();
                 renderHistory(); 
@@ -572,18 +613,32 @@
             
             const text = `*LAPORAN O-TRACK*\nTanggal: ${date}\nJam: ${time} WIB\n\n- Total ${currentUnit}: ${totalQty} ${currentUnit}\n- Total Estimasi: ${formatRp(totalMoney)}\n\n_Generated by O-Track_`;
             
-            const el = document.createElement('textarea');
-            el.value = text;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-            
-            showToast('LAPORAN DISALIN!');
+            // Clipboard API Modern
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast('LAPORAN DISALIN!');
+                }).catch(err => {
+                    alert('Gagal menyalin teks!');
+                });
+            } else {
+                // Fallback lawas kalau API clipboard ke-blokir
+                const el = document.createElement('textarea');
+                el.value = text;
+                document.body.appendChild(el);
+                el.select();
+                try {
+                    document.execCommand('copy');
+                    showToast('LAPORAN DISALIN!');
+                } catch (err) {
+                    alert('Gagal menyalin teks!');
+                }
+                document.body.removeChild(el);
+            }
         }
 
         function renderHistory() {
             const logs = JSON.parse(localStorage.getItem('otrack_offline') || '[]');
+            const safeUnit = escapeHTML(currentUnit); // XSS Sanitizer sebelum masuk render HTML
             
             if (logs.length === 0) {
                 container.innerHTML = '<div class="label" style="margin-bottom: 12px;">Riwayat Data</div><div class="main-card" style="padding: 24px; box-shadow: none; border: 1px dashed rgba(255, 255, 255, 0.1); background: transparent;"><p style="margin:0; font-weight: 600;">BELUM ADA DATA HARI INI</p></div>';
@@ -607,7 +662,7 @@
                         </button>
                     </div>
                     <div class="summary-body">
-                        <div class="summary-qty">${totalQty}<span>${currentUnit}</span></div>
+                        <div class="summary-qty">${totalQty}<span>${safeUnit}</span></div>
                         <div class="summary-rp">${formatRp(totalMoney)}</div>
                     </div>
                 </div>
@@ -622,8 +677,8 @@
                 return `
                 <div class="history-item" style="--delay: ${animDelay};">
                     <div>
-                        <div class="history-item-qty">${item.val} <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-dim);">${currentUnit}</span></div>
-                        <div class="history-item-time">${displayTime}</div>
+                        <div class="history-item-qty">${item.val} <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-dim);">${safeUnit}</span></div>
+                        <div class="history-item-time">${escapeHTML(displayTime)}</div>
                     </div>
                     <div class="history-right">
                         <div class="history-item-total">${formatRp(item.total)}</div>
