@@ -46,6 +46,22 @@
         .summary-qty span { font-size: 0.75rem; font-weight: 600; color: var(--text-dim); margin-left: 6px; }
         .summary-rp { font-size: 1.25rem; font-weight: 800; opacity: 0.9;}
         
+        /* CSS BON */
+        .bon-card { background: linear-gradient(145deg, rgba(239, 68, 68, 0.1), transparent); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: var(--radius-md); padding: 24px; margin-bottom: 24px; backdrop-filter: blur(10px); transition: 0.3s; }
+        .bon-card.lunas { background: linear-gradient(145deg, rgba(6, 182, 212, 0.05), transparent); border-color: rgba(6, 182, 212, 0.2); }
+        .bon-header { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--danger); margin-bottom: 16px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; }
+        .bon-card.lunas .bon-header { color: var(--accent); }
+        .bon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .bon-item { display: flex; flex-direction: column; gap: 4px; }
+        .bon-label { font-size: 0.65rem; color: var(--text-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .bon-val { font-size: 1.1rem; font-weight: 800; }
+        .bon-val.sisa { color: var(--danger); }
+        .bon-val.lunas { color: var(--accent); }
+        .progress-bg { background: rgba(255,255,255,0.05); height: 8px; border-radius: 10px; overflow: hidden; position: relative; margin-top: 8px; border: 1px solid rgba(255,255,255,0.05); }
+        .progress-bar { background: var(--danger); height: 100%; width: 0%; transition: width 0.8s var(--ease-out); border-radius: 10px; box-shadow: 0 0 10px var(--danger-glow); }
+        .progress-bar.lunas { background: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
+        .progress-text { font-size: 0.7rem; font-weight: 700; color: var(--text-dim); text-align: right; margin-top: 6px; }
+
         .btn-export { background: var(--surface); color: var(--text-main); border: 1px solid var(--border); padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.65rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; }
         .history-item { background: transparent; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; opacity: 0; animation: fadeUp 0.5s forwards; animation-delay: calc(var(--delay) * 0.05s); }
         .history-item-qty { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.5px; }
@@ -61,6 +77,34 @@
 
         .watermark-footer { text-align: center; padding: 30px 0 20px 0; color: var(--text-dim); font-size: 0.7rem; opacity: 0.6; letter-spacing: 0.5px; margin-top: auto; }
         .watermark-footer strong { color: var(--text-main); font-weight: 700; }
+
+        /* CSS BARU UNTUK SETTINGS MODAL (GAYA PWA APP) */
+        .settings-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--ease-out); display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .settings-overlay.show { opacity: 1; pointer-events: auto; }
+        .settings-modal { background: #111111; width: 100%; max-width: 400px; border-radius: var(--radius-lg); padding: 24px; transform: translateY(30px) scale(0.95); transition: 0.4s var(--ease-out); border: 1px solid var(--border); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); max-height: 90vh; overflow-y: auto; }
+        .settings-overlay.show .settings-modal { transform: translateY(0) scale(1); }
+        .settings-modal::-webkit-scrollbar { width: 4px; } .settings-modal::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .modal-header h2 { font-size: 1.1rem; margin: 0; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+        .btn-close { background: var(--surface); border: none; color: var(--text-main); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; }
+        .btn-close:hover { background: var(--surface-hover); }
+
+        .setting-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 20px; margin-bottom: 16px; }
+        .setting-title { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-dim); font-weight: 700; margin-bottom: 16px; }
+        .setting-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.85rem; font-weight: 600; }
+        
+        .btn-menu { width: 100%; background: var(--surface); border: 1px solid var(--border); color: var(--text-main); padding: 14px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.85rem; cursor: pointer; margin-bottom: 10px; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-menu:hover { background: var(--surface-hover); }
+        .btn-menu:last-child { margin-bottom: 0; }
+        
+        .danger-zone { border-color: rgba(239, 68, 68, 0.2); }
+        .danger-zone .setting-title { color: var(--danger); }
+        .btn-danger { background: transparent; border: 1px solid rgba(239, 68, 68, 0.3); color: var(--danger); }
+        .btn-danger:hover { background: rgba(239, 68, 68, 0.1); }
+        .btn-danger.confirm { background: var(--danger); color: white; animation: pulseRed 1s infinite; }
+        
+        @keyframes pulseRed { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); } 70% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
 
         /* DESKTOP RESPONSIVENESS */
         @media (min-width: 768px) {
@@ -78,8 +122,11 @@
             <header class="animate-fade-up">
                 <div class="header-left"><h1>O-TRACK</h1><div id="weather" class="weather-widget">📡 Mengecek cuaca...</div></div>
                 <div class="header-right">
+                    <!-- Ikon lama tetap dipertahankan sesuai request -->
                     <button onclick="backupData()" class="btn-header" title="Backup Data"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"></path></svg></button>
                     <button onclick="triggerRestore()" class="btn-header" title="Restore Data"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"></path></svg></button>
+                    <!-- Tambahan Ikon Pengaturan -->
+                    <button onclick="toggleSettings()" class="btn-header" title="Pengaturan"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></button>
                 </div>
             </header>
 
@@ -87,7 +134,11 @@
                 <div class="main-card animate-fade-up delay-1">
                     <div class="label">Estimasi Saat Ini</div>
                     <div id="display-rp" class="total-display">Rp 0</div>
-                    <div class="settings-row"><div id="badge-price" class="setting-badge" onclick="changePrice()">...</div><div id="badge-unit" class="setting-badge" onclick="changeUnit()">...</div></div>
+                    <div class="settings-row">
+                        <div id="badge-price" class="setting-badge" onclick="changePrice()">...</div>
+                        <div id="badge-unit" class="setting-badge" onclick="changeUnit()">...</div>
+                        <div id="badge-bon" class="setting-badge" onclick="setBon()">Atur Bon</div>
+                    </div>
                     <div class="input-group">
                         <input type="number" id="input-qty" placeholder="0">
                         <button id="btn-clear" class="btn-clear" onclick="resetInput()"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg></button>
@@ -104,12 +155,54 @@
         <div class="watermark-footer">Built with precision by <strong>Ardadinata</strong>.<br>Digital Strategy & Development 2026.</div>
     </div>
 
+    <!-- MODAL PENGATURAN BARU (INJECTED) -->
+    <div class="settings-overlay" id="settings-modal" onclick="closeSettings(event)">
+        <div class="settings-modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> Settings</h2>
+                <button class="btn-close" onclick="toggleSettings()"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+
+            <div class="setting-card">
+                <div class="setting-title">APP INSTALL (PWA)</div>
+                <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.5;">Install O-Track ke HP untuk akses offline penuh layaknya aplikasi asli.</p>
+                <div style="font-size: 0.75rem; color: var(--accent); font-weight: 600; cursor: pointer;" onclick="showToast('Tekan ikon titik tiga di browser > Add to Home Screen')">Your browser supports PWA! Add to Home Screen.</div>
+            </div>
+
+            <div class="setting-card">
+                <div class="setting-title">STORAGE USAGE</div>
+                <div class="setting-row">
+                    <span style="color: var(--text-dim);">Local Storage</span>
+                    <span id="storage-indicator">0 KB / 5 MB</span>
+                </div>
+                <div class="progress-bg">
+                    <div class="progress-bar lunas" id="storage-bar" style="width: 0%; height: 100%;"></div>
+                </div>
+            </div>
+
+            <div class="setting-card">
+                <div class="setting-title">BACKUP & RESTORE</div>
+                <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 16px; line-height: 1.5;">Export semua data (Riwayat, Bon, Pengaturan) ke dalam file JSON.</p>
+                <button class="btn-menu" onclick="backupData()">Export Backup</button>
+                <button class="btn-menu" onclick="triggerRestore()">Import Backup</button>
+            </div>
+
+            <div class="setting-card danger-zone">
+                <div class="setting-title">DANGER ZONE</div>
+                <button class="btn-menu btn-danger" id="btn-wipe" onclick="confirmWipe()">Wipe All Data</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         const input = document.getElementById('input-qty'); const display = document.getElementById('display-rp'); const container = document.getElementById('history-container');
         const badgePrice = document.getElementById('badge-price'); const badgeUnit = document.getElementById('badge-unit'); const inputLabel = document.getElementById('input-label');
         const btnClear = document.getElementById('btn-clear'); const weatherEl = document.getElementById('weather'); let toastTimeout;
         
-        let currentPrice = parseInt(localStorage.getItem('otrack_price')) || 7200; let currentUnit = localStorage.getItem('otrack_unit') || 'Karung';
+        let currentPrice = parseInt(localStorage.getItem('otrack_price')) || 7200; 
+        let currentUnit = localStorage.getItem('otrack_unit') || 'Karung';
+        let currentBonAwal = parseInt(localStorage.getItem('otrack_bon_awal')) || 0;
+        let currentBonTerbayar = parseInt(localStorage.getItem('otrack_bon_terbayar')) || 0;
 
         function escapeHTML(str) { return String(str).replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag])); }
 
@@ -131,16 +224,34 @@
             } catch (e) { if(!localStorage.getItem('otrack_weather')) weatherEl.innerText = "📡 Offline"; }
         }
 
-        function updateSettingsDisplay() { badgePrice.innerText = `Rp ${currentPrice.toLocaleString('id-ID')} / ${currentUnit}`; badgeUnit.innerText = `Satuan: ${currentUnit}`; inputLabel.innerText = `Jumlah ${currentUnit}`; }
+        function updateSettingsDisplay() { 
+            badgePrice.innerText = `Rp ${currentPrice.toLocaleString('id-ID')} / ${currentUnit}`; 
+            badgeUnit.innerText = `Satuan: ${currentUnit}`; 
+            inputLabel.innerText = `Jumlah ${currentUnit}`; 
+            document.getElementById('badge-bon').innerText = currentBonAwal > 0 ? 'Target: Aktif' : 'Atur Bon';
+        }
 
         function changePrice() {
             const nPrice = prompt(`Harga per ${currentUnit}:`, currentPrice);
-            if (nPrice !== null && nPrice !== "") { const p = parseInt(nPrice); if (!isNaN(p) && p > 0) { currentPrice = p; localStorage.setItem('otrack_price', currentPrice); updateSettingsDisplay(); updateDisplay(); } else { alert('Angka gak valid!'); } }
+            if (nPrice !== null && nPrice !== "") { const p = parseInt(nPrice); if (!isNaN(p) && p > 0) { currentPrice = p; localStorage.setItem('otrack_price', currentPrice); updateSettingsDisplay(); updateDisplay(); updateStorageCalc(); } else { alert('Angka gak valid!'); } }
         }
 
         function changeUnit() {
             const nUnit = prompt('Satuan baru (maks. 15 huruf):', currentUnit);
-            if (nUnit !== null && nUnit.trim() !== "") { const t = nUnit.trim(); if (t.length > 15) { alert('Kepanjangan!'); return; } currentUnit = t; localStorage.setItem('otrack_unit', currentUnit); updateSettingsDisplay(); renderHistory(); }
+            if (nUnit !== null && nUnit.trim() !== "") { const t = nUnit.trim(); if (t.length > 15) { alert('Kepanjangan!'); return; } currentUnit = t; localStorage.setItem('otrack_unit', currentUnit); updateSettingsDisplay(); renderHistory(); updateStorageCalc(); }
+        }
+
+        function setBon() {
+            const nBon = prompt('Masukkan nominal target Bon / Utang (Ketik 0 untuk hapus):', currentBonAwal);
+            if (nBon !== null && nBon !== "") { 
+                const p = parseInt(nBon); 
+                if (!isNaN(p) && p >= 0) { 
+                    currentBonAwal = p; currentBonTerbayar = 0; 
+                    localStorage.setItem('otrack_bon_awal', currentBonAwal); localStorage.setItem('otrack_bon_terbayar', currentBonTerbayar);
+                    updateSettingsDisplay(); renderHistory(); updateStorageCalc();
+                    showToast(p > 0 ? 'TARGET BON DISIMPAN' : 'TARGET BON DIHAPUS'); 
+                } else { alert('Angka gak valid bro!'); } 
+            }
         }
 
         function updateDisplay() {
@@ -155,26 +266,59 @@
             const val = parseInt(input.value) || 0; if (val <= 0) return;
             const total = val * currentPrice; const now = new Date();
             const dtStr = `${now.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' })} • ${now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })} WIB`;
+            
+            if (currentBonAwal > 0) { currentBonTerbayar += total; localStorage.setItem('otrack_bon_terbayar', currentBonTerbayar); }
+
             showToast('DATA TERSIMPAN');
             const logs = JSON.parse(localStorage.getItem('otrack_offline') || '[]'); logs.unshift({ val, total, datetime: dtStr }); localStorage.setItem('otrack_offline', JSON.stringify(logs)); 
-            renderHistory(); resetInput();
+            renderHistory(); resetInput(); updateStorageCalc();
         }
 
-        function deleteItem(idx) { const logs = JSON.parse(localStorage.getItem('otrack_offline') || '[]'); logs.splice(idx, 1); localStorage.setItem('otrack_offline', JSON.stringify(logs)); renderHistory(); }
+        function deleteItem(idx) { 
+            const logs = JSON.parse(localStorage.getItem('otrack_offline') || '[]'); const deletedTotal = logs[idx].total;
+            if (currentBonAwal > 0) { currentBonTerbayar = Math.max(0, currentBonTerbayar - deletedTotal); localStorage.setItem('otrack_bon_terbayar', currentBonTerbayar); }
+            logs.splice(idx, 1); localStorage.setItem('otrack_offline', JSON.stringify(logs)); renderHistory(); updateStorageCalc();
+        }
 
         function exportReport(tQty, tMoney) {
             const now = new Date(); const t = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }); const d = now.toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' });
-            const txt = `*LAPORAN O-TRACK*\nTanggal: ${d}\nJam: ${t} WIB\n\n- Total ${currentUnit}: ${tQty} ${currentUnit}\n- Total Estimasi: ${formatRp(tMoney)}\n\n_Generated by O-Track_`;
+            let txt = `*LAPORAN O-TRACK*\nTanggal: ${d}\nJam: ${t} WIB\n\n- Total ${currentUnit}: ${tQty} ${currentUnit}\n- Total Estimasi: ${formatRp(tMoney)}`;
+            if (currentBonAwal > 0) { let sisa = Math.max(0, currentBonAwal - currentBonTerbayar); txt += `\n\n*STATUS BON*\n- Bon Awal: ${formatRp(currentBonAwal)}\n- Terbayar: ${formatRp(currentBonTerbayar)}\n- Sisa Bon: ${formatRp(sisa)}`; }
+            txt += `\n\n_Generated by O-Track_`;
+
             if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(txt).then(() => showToast('LAPORAN DISALIN!')).catch(()=>alert('Gagal!')); } 
             else { const el = document.createElement('textarea'); el.value = txt; document.body.appendChild(el); el.select(); try { document.execCommand('copy'); showToast('LAPORAN DISALIN!'); } catch (err) {} document.body.removeChild(el); }
         }
 
         function renderHistory() {
-            const logs = JSON.parse(localStorage.getItem('otrack_offline') || '[]'); const safeUnit = escapeHTML(currentUnit); 
-            if (logs.length === 0) { container.innerHTML = '<div class="label" style="margin-bottom: 12px;">Riwayat Data</div><div class="main-card" style="padding: 24px; box-shadow: none; border: 1px dashed rgba(255, 255, 255, 0.1); background: transparent;"><p style="margin:0; font-weight: 600; color: var(--text-dim); font-size: 0.75rem;">BELUM ADA DATA</p></div>'; return; }
+            const logs = JSON.parse(localStorage.getItem('otrack_offline') || '[]'); const safeUnit = escapeHTML(currentUnit); let h = '';
+
+            if (currentBonAwal > 0) {
+                let sisaBon = Math.max(0, currentBonAwal - currentBonTerbayar);
+                let progress = Math.min((currentBonTerbayar / currentBonAwal) * 100, 100);
+                const isLunas = sisaBon === 0;
+
+                h += `
+                    <div class="bon-card animate-fade-up ${isLunas ? 'lunas' : ''}">
+                        <div class="bon-header"><span>Target Bon / Utang</span><button onclick="setBon()" class="btn-export" style="background: transparent; border: none; padding: 0;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg></button></div>
+                        <div class="bon-grid">
+                            <div class="bon-item"><span class="bon-label">Bon Awal</span><span class="bon-val">${formatRp(currentBonAwal)}</span></div>
+                            <div class="bon-item"><span class="bon-label">Sisa Bon</span><span class="bon-val ${isLunas ? 'lunas' : 'sisa'}">${formatRp(sisaBon)}</span></div>
+                        </div>
+                        <div class="bon-item" style="margin-top: 8px;">
+                            <div style="display: flex; justify-content: space-between;"><span class="bon-label">Sudah Dibayar</span><span class="bon-label" style="color: var(--text-main); font-weight: 800;">${formatRp(currentBonTerbayar)}</span></div>
+                            <div class="progress-bg"><div class="progress-bar ${isLunas ? 'lunas' : ''}" style="width: ${progress}%"></div></div>
+                            <div class="progress-text">${progress.toFixed(1)}% ${isLunas ? '(LUNAS)' : ''}</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (logs.length === 0) { container.innerHTML = h + '<div class="label" style="margin-bottom: 12px;">Riwayat Data</div><div class="main-card" style="padding: 24px; box-shadow: none; border: 1px dashed rgba(255, 255, 255, 0.1); background: transparent;"><p style="margin:0; font-weight: 600; color: var(--text-dim); font-size: 0.75rem;">BELUM ADA DATA</p></div>'; return; }
             let tQty = 0; let tMoney = 0; logs.forEach(i => { tQty += i.val; tMoney += i.total; });
-            let h = `
-                <div class="summary-card animate-fade-up">
+            
+            h += `
+                <div class="summary-card animate-fade-up delay-1">
                     <div class="summary-header"><span>Total Keseluruhan</span><button onclick="exportReport(${tQty}, ${tMoney})" class="btn-export"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>SALIN</button></div>
                     <div class="summary-body"><div class="summary-qty">${tQty}<span>${safeUnit}</span></div><div class="summary-rp">${formatRp(tMoney)}</div></div>
                 </div><div class="label animate-fade-up" style="margin-bottom: 16px; margin-top: 32px; animation-delay: 0.1s;">Rincian Riwayat</div>
@@ -186,8 +330,10 @@
         }
 
         function backupData() {
-            const db = { price: localStorage.getItem('otrack_price'), unit: localStorage.getItem('otrack_unit'), history: localStorage.getItem('otrack_offline') };
-            const blob = new Blob([JSON.stringify(db)], { type: "application/json" }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = `OTrack_Backup_${new Date().toISOString().slice(0,10)}.json`; a.click(); URL.revokeObjectURL(url); showToast('BACKUP BERHASIL');
+            const db = { price: localStorage.getItem('otrack_price'), unit: localStorage.getItem('otrack_unit'), history: localStorage.getItem('otrack_offline'), bonAwal: localStorage.getItem('otrack_bon_awal'), bonTerbayar: localStorage.getItem('otrack_bon_terbayar') };
+            const blob = new Blob([JSON.stringify(db)], { type: "application/json" }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = `OTrack_Backup_${new Date().toISOString().slice(0,10)}.json`; a.click(); URL.revokeObjectURL(url); 
+            showToast('BACKUP BERHASIL');
+            if(document.getElementById('settings-modal').classList.contains('show')) toggleSettings();
         }
 
         function triggerRestore() { document.getElementById('file-restore').click(); }
@@ -195,11 +341,52 @@
         function restoreData(e) {
             const f = e.target.files[0]; if (!f) return; const r = new FileReader();
             r.onload = function(ev) {
-                try { const d = JSON.parse(ev.target.result); if (d.price) localStorage.setItem('otrack_price', d.price); if (d.unit) localStorage.setItem('otrack_unit', d.unit); if (d.history) localStorage.setItem('otrack_offline', d.history); currentPrice = parseInt(d.price) || 7200; currentUnit = d.unit || 'Karung'; updateSettingsDisplay(); renderHistory(); showToast('RESTORE BERHASIL'); } 
-                catch (err) { alert('Gagal!'); } e.target.value = '';
+                try { 
+                    const d = JSON.parse(ev.target.result); 
+                    if (d.price) localStorage.setItem('otrack_price', d.price); if (d.unit) localStorage.setItem('otrack_unit', d.unit); if (d.history) localStorage.setItem('otrack_offline', d.history); 
+                    if (d.bonAwal) localStorage.setItem('otrack_bon_awal', d.bonAwal); if (d.bonTerbayar) localStorage.setItem('otrack_bon_terbayar', d.bonTerbayar);
+                    currentPrice = parseInt(d.price) || 7200; currentUnit = d.unit || 'Karung'; currentBonAwal = parseInt(d.bonAwal) || 0; currentBonTerbayar = parseInt(d.bonTerbayar) || 0;
+                    updateSettingsDisplay(); renderHistory(); updateStorageCalc(); showToast('RESTORE BERHASIL'); 
+                    if(document.getElementById('settings-modal').classList.contains('show')) toggleSettings();
+                } catch (err) { alert('Gagal!'); } e.target.value = '';
             }; r.readAsText(f);
         }
+
         function showToast(msg) { const t = document.getElementById('toast'); document.getElementById('toast-msg').innerText = msg; t.classList.add('show'); clearTimeout(toastTimeout); toastTimeout = setTimeout(() => t.classList.remove('show'), 2500); }
+
+        /* FUNGSI BARU UNTUK SETTINGS MODAL */
+        function toggleSettings() { 
+            const modal = document.getElementById('settings-modal'); 
+            modal.classList.toggle('show');
+            if(modal.classList.contains('show')) { updateStorageCalc(); wipeStep = 0; resetWipeBtn(); } // reset button state on open
+        }
+        function closeSettings(e) { if(e.target.id === 'settings-modal') toggleSettings(); }
+
+        function updateStorageCalc() {
+            let total = 0;
+            for (let x in localStorage) { if (localStorage.hasOwnProperty(x)) { total += ((localStorage[x].length + x.length) * 2); } }
+            let kb = (total / 1024).toFixed(2);
+            document.getElementById('storage-indicator').innerText = `${kb} KB / 5 MB`;
+            let percent = Math.min((total / 5242880) * 100, 100); // 5MB in bytes approx
+            document.getElementById('storage-bar').style.width = `${percent}%`;
+            // Ganti warna bar kalo mau penuh (opsional, default biru kayak lunas)
+            if(percent > 80) document.getElementById('storage-bar').style.background = 'var(--danger)';
+            else document.getElementById('storage-bar').style.background = 'var(--accent)';
+        }
+
+        let wipeStep = 0;
+        function confirmWipe() {
+            const btn = document.getElementById('btn-wipe');
+            if (wipeStep === 0) {
+                btn.innerText = "Yakin? Tap sekali lagi!"; btn.classList.add('confirm'); wipeStep = 1;
+                setTimeout(() => { resetWipeBtn(); }, 4000); // Batal otomatis dlm 4 detik
+            } else {
+                localStorage.clear(); location.reload(); // Refresh total layaknya instal ulang
+            }
+        }
+        function resetWipeBtn() { const btn = document.getElementById('btn-wipe'); btn.innerText = "Wipe All Data"; btn.classList.remove('confirm'); wipeStep = 0; }
     </script>
 </body>
 </html>
+
+
