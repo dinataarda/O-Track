@@ -26,12 +26,15 @@
         .btn-header svg { width: 18px; height: 18px; }
         .weather-widget { font-size: 0.7rem; color: var(--text-dim); font-weight: 600; margin-top: 4px; }
 
-        /* REDESAIN CARD ESTIMASI */
+        /* MULTI-PROFILE SWITCH */
+        .profile-switch { background: var(--surface); color: var(--accent); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 4px 8px; font-size: 0.7rem; font-weight: 700; outline: none; cursor: pointer; backdrop-filter: blur(12px); transition: 0.2s; }
+        .profile-switch:hover { border-color: var(--accent); }
+        .profile-switch option { background: var(--bg-base); color: var(--text-main); font-weight: 600; }
+
         .main-card { background: rgba(20, 25, 35, 0.5); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px 20px; text-align: center; position: relative; backdrop-filter: blur(20px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
         .label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-dim); font-weight: 700; margin-bottom: 6px; }
         .total-display { font-size: 2.6rem; font-weight: 900; margin-bottom: 20px; letter-spacing: -1.5px; line-height: 1.1; text-shadow: 0 0 20px rgba(255,255,255,0.05); }
         
-        /* REDESAIN INFO BAR (Badge) */
         .info-bar { display: flex; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: var(--radius-sm); margin-bottom: 20px; overflow: hidden; }
         .info-bar > div { flex: 1; padding: 10px 4px; font-size: 0.65rem; font-weight: 600; color: var(--text-dim); text-align: center; cursor: pointer; border-right: 1px solid rgba(255, 255, 255, 0.05); transition: 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
         .info-bar > div:last-child { border-right: none; }
@@ -40,7 +43,6 @@
         .info-val.on { color: #10b981; text-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
         .info-val.off { color: var(--danger); }
 
-        /* REDESAIN INPUT JUMLAH */
         .input-wrapper { position: relative; margin-bottom: 12px; }
         .input-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--accent); width: 22px; height: 22px; pointer-events: none; opacity: 0.8; }
         input[type="number"] { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px 48px 18px 48px; color: var(--text-main); font-size: 1.3rem; font-weight: 800; text-align: left; outline: none; transition: 0.3s var(--ease-out); box-shadow: inset 0 2px 10px rgba(0,0,0,0.1); }
@@ -50,13 +52,11 @@
         .btn-clear { position: absolute; right: 12px; top: 50%; transform: translateY(-50%) scale(0.8); background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; pointer-events: none; transition: 0.3s; }
         .btn-clear.show { opacity: 1; pointer-events: auto; transform: translateY(-50%) scale(1); }
 
-        /* AREA INFO HARI INI */
         .today-stats { display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.02); border-radius: var(--radius-sm); padding: 12px 16px; margin-bottom: 20px; border: 1px dashed rgba(255, 255, 255, 0.06); }
         .stat-item { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; color: var(--text-dim); font-weight: 600; }
         .stat-item svg { width: 14px; height: 14px; color: var(--accent); opacity: 0.8; }
         .stat-val { color: var(--text-main); font-weight: 800; margin-left: 2px; }
 
-        /* REDESAIN TOMBOL SIMPAN */
         .btn-main { width: 100%; background: #ffffff; color: #000000; border: none; padding: 18px; border-radius: var(--radius-md); font-weight: 800; font-size: 0.9rem; cursor: pointer; text-transform: uppercase; box-shadow: 0 4px 15px rgba(255,255,255,0.15); transition: all 0.3s var(--ease-out); letter-spacing: 0.5px; }
         .btn-main:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,255,255,0.25); }
         .btn-main:active { transform: translateY(1px); box-shadow: 0 2px 10px rgba(255,255,255,0.1); }
@@ -69,7 +69,6 @@
         .summary-qty span { font-size: 0.7rem; font-weight: 600; color: var(--text-dim); margin-left: 6px; }
         .summary-rp { font-size: 1.15rem; font-weight: 800; opacity: 0.9;}
         
-        /* CSS BON */
         .bon-card { background: linear-gradient(145deg, rgba(239, 68, 68, 0.08), transparent); border: 1px solid rgba(239, 68, 68, 0.15); border-radius: var(--radius-md); padding: 20px; margin-bottom: 24px; backdrop-filter: blur(10px); transition: 0.3s; }
         .bon-card.lunas { background: linear-gradient(145deg, rgba(6, 182, 212, 0.05), transparent); border-color: rgba(6, 182, 212, 0.2); }
         .bon-header { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--danger); margin-bottom: 16px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; }
@@ -143,7 +142,18 @@
     <div class="container">
         <div class="main-content">
             <header class="animate-fade-up">
-                <div class="header-left"><h1>O-TRACK</h1><div id="weather" class="weather-widget">📡 Mengecek cuaca...</div></div>
+                <div class="header-left">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <h1>O-TRACK</h1>
+                        <!-- MULTI PROFILE SWITCHER -->
+                        <select id="profile-select" class="profile-switch" onchange="switchProfile(this.value)">
+                            <option value="P1">Akun 1</option>
+                            <option value="P2">Akun 2</option>
+                            <option value="P3">Akun 3</option>
+                        </select>
+                    </div>
+                    <div id="weather" class="weather-widget">📡 Mengecek cuaca...</div>
+                </div>
                 <div class="header-right">
                     <button onclick="backupData()" class="btn-header" title="Backup Data"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"></path></svg></button>
                     <button onclick="triggerRestore()" class="btn-header" title="Restore Data"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"></path></svg></button>
@@ -156,25 +166,18 @@
                     <div class="label">Estimasi Saat Ini</div>
                     <div id="display-rp" class="total-display">Rp 0</div>
                     
-                    <!-- NEW HORIZONTAL INFO BAR -->
                     <div class="info-bar">
                         <div id="badge-price" onclick="changePrice()">Harga <span class="info-val">...</span></div>
                         <div id="badge-unit" onclick="changeUnit()">Satuan <span class="info-val">...</span></div>
                         <div id="badge-bon" onclick="setBon()">Target <span class="info-val">...</span></div>
                     </div>
 
-                    <!-- NEW PREMIUM INPUT -->
                     <div class="input-wrapper">
-                        <!-- Custom Box/Coin Icon -->
                         <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-                        
                         <input type="number" id="input-qty" placeholder="Masukkan jumlah...">
-                        
                         <button id="btn-clear" class="btn-clear" onclick="resetInput()"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-                        <div id="input-label" style="display: none;"></div>
                     </div>
 
-                    <!-- NEW TODAY INFO AREA -->
                     <div class="today-stats">
                         <div class="stat-item">
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -216,28 +219,39 @@
             </div>
             <div class="setting-card">
                 <div class="setting-title">BACKUP & RESTORE</div>
-                <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 16px; line-height: 1.5;">Export semua data (Riwayat, Bon, Pengaturan) ke dalam file JSON.</p>
+                <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 16px; line-height: 1.5;">Export data (Riwayat, Bon, Pengaturan) khusus untuk akun ini.</p>
                 <button class="btn-menu" onclick="backupData()">Export Backup</button>
                 <button class="btn-menu" onclick="triggerRestore()">Import Backup</button>
             </div>
             <div class="setting-card danger-zone">
                 <div class="setting-title">DANGER ZONE</div>
-                <button class="btn-menu btn-danger" id="btn-wipe" onclick="confirmWipe()">Wipe All Data</button>
+                <button class="btn-menu btn-danger" id="btn-wipe" onclick="confirmWipe()">Wipe Data (Semua Akun)</button>
             </div>
         </div>
     </div>
 
     <script>
         const input = document.getElementById('input-qty'); const display = document.getElementById('display-rp'); const container = document.getElementById('history-container');
-        const badgePrice = document.getElementById('badge-price'); const badgeUnit = document.getElementById('badge-unit'); const inputLabel = document.getElementById('input-label');
+        const badgePrice = document.getElementById('badge-price'); const badgeUnit = document.getElementById('badge-unit'); 
         const btnClear = document.getElementById('btn-clear'); const weatherEl = document.getElementById('weather'); let toastTimeout;
         
-        let currentPrice = parseInt(localStorage.getItem('otrack_price')) || 7200; 
-        let currentUnit = localStorage.getItem('otrack_unit') || 'Karung';
-        let currentBonAwal = parseInt(localStorage.getItem('otrack_bon_awal')) || 0;
-        let currentBonTerbayar = parseInt(localStorage.getItem('otrack_bon_terbayar')) || 0;
+        // LOGIC MULTI-PROFILE 
+        const activeProfile = localStorage.getItem('otrack_active_profile') || 'P1';
+        document.getElementById('profile-select').value = activeProfile;
+
+        // Semua data sekarang disimpan dengan awalan nama profile (contoh: P1_otrack_price, P2_otrack_price)
+        let currentPrice = parseInt(localStorage.getItem(`${activeProfile}_otrack_price`)) || 7200; 
+        let currentUnit = localStorage.getItem(`${activeProfile}_otrack_unit`) || 'Karung';
+        let currentBonAwal = parseInt(localStorage.getItem(`${activeProfile}_otrack_bon_awal`)) || 0;
+        let currentBonTerbayar = parseInt(localStorage.getItem(`${activeProfile}_otrack_bon_terbayar`)) || 0;
 
         function escapeHTML(str) { return String(str).replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag])); }
+
+        // Fungsi ganti profil
+        function switchProfile(val) {
+            localStorage.setItem('otrack_active_profile', val);
+            location.reload(); // Refresh halaman biar data baru ke-load dengan bersih
+        }
 
         updateSettingsDisplay(); renderHistory(); initWeather();
         input.addEventListener('input', updateDisplay);
@@ -257,7 +271,6 @@
             } catch (e) { if(!localStorage.getItem('otrack_weather')) weatherEl.innerText = "📡 Offline"; }
         }
 
-        /* MODIFIED ONLY VISUAL TEXT RENDERING */
         function updateSettingsDisplay() { 
             badgePrice.innerHTML = `Harga <span class="info-val">Rp ${currentPrice.toLocaleString('id-ID')}</span>`; 
             badgeUnit.innerHTML = `Satuan <span class="info-val">${currentUnit}</span>`; 
@@ -266,17 +279,16 @@
             document.getElementById('badge-bon').innerHTML = `Target ${bonStatus}`;
             
             input.placeholder = `Masukkan jumlah ${currentUnit.toLowerCase()}`;
-            if(inputLabel) inputLabel.style.display = 'none'; // Visually hide old label
         }
 
         function changePrice() {
             const nPrice = prompt(`Harga per ${currentUnit}:`, currentPrice);
-            if (nPrice !== null && nPrice !== "") { const p = parseInt(nPrice); if (!isNaN(p) && p > 0) { currentPrice = p; localStorage.setItem('otrack_price', currentPrice); updateSettingsDisplay(); updateDisplay(); updateStorageCalc(); } else { alert('Angka gak valid!'); } }
+            if (nPrice !== null && nPrice !== "") { const p = parseInt(nPrice); if (!isNaN(p) && p > 0) { currentPrice = p; localStorage.setItem(`${activeProfile}_otrack_price`, currentPrice); updateSettingsDisplay(); updateDisplay(); updateStorageCalc(); } else { alert('Angka gak valid!'); } }
         }
 
         function changeUnit() {
             const nUnit = prompt('Satuan baru (maks. 15 huruf):', currentUnit);
-            if (nUnit !== null && nUnit.trim() !== "") { const t = nUnit.trim(); if (t.length > 15) { alert('Kepanjangan!'); return; } currentUnit = t; localStorage.setItem('otrack_unit', currentUnit); updateSettingsDisplay(); renderHistory(); updateStorageCalc(); }
+            if (nUnit !== null && nUnit.trim() !== "") { const t = nUnit.trim(); if (t.length > 15) { alert('Kepanjangan!'); return; } currentUnit = t; localStorage.setItem(`${activeProfile}_otrack_unit`, currentUnit); updateSettingsDisplay(); renderHistory(); updateStorageCalc(); }
         }
 
         function setBon() {
@@ -285,7 +297,7 @@
                 const p = parseInt(nBon); 
                 if (!isNaN(p) && p >= 0) { 
                     currentBonAwal = p; currentBonTerbayar = 0; 
-                    localStorage.setItem('otrack_bon_awal', currentBonAwal); localStorage.setItem('otrack_bon_terbayar', currentBonTerbayar);
+                    localStorage.setItem(`${activeProfile}_otrack_bon_awal`, currentBonAwal); localStorage.setItem(`${activeProfile}_otrack_bon_terbayar`, currentBonTerbayar);
                     updateSettingsDisplay(); renderHistory(); updateStorageCalc();
                     showToast(p > 0 ? 'TARGET BON DISIMPAN' : 'TARGET BON DIHAPUS'); 
                 } else { alert('Angka gak valid bro!'); } 
@@ -305,22 +317,22 @@
             const total = val * currentPrice; const now = new Date();
             const dtStr = `${now.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' })} • ${now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })} WIB`;
             
-            if (currentBonAwal > 0) { currentBonTerbayar += total; localStorage.setItem('otrack_bon_terbayar', currentBonTerbayar); }
+            if (currentBonAwal > 0) { currentBonTerbayar += total; localStorage.setItem(`${activeProfile}_otrack_bon_terbayar`, currentBonTerbayar); }
 
             showToast('DATA TERSIMPAN');
-            const logs = JSON.parse(localStorage.getItem('otrack_offline') || '[]'); logs.unshift({ val, total, datetime: dtStr }); localStorage.setItem('otrack_offline', JSON.stringify(logs)); 
+            const logs = JSON.parse(localStorage.getItem(`${activeProfile}_otrack_offline`) || '[]'); logs.unshift({ val, total, datetime: dtStr }); localStorage.setItem(`${activeProfile}_otrack_offline`, JSON.stringify(logs)); 
             renderHistory(); resetInput(); updateStorageCalc();
         }
 
         function deleteItem(idx) { 
-            const logs = JSON.parse(localStorage.getItem('otrack_offline') || '[]'); const deletedTotal = logs[idx].total;
-            if (currentBonAwal > 0) { currentBonTerbayar = Math.max(0, currentBonTerbayar - deletedTotal); localStorage.setItem('otrack_bon_terbayar', currentBonTerbayar); }
-            logs.splice(idx, 1); localStorage.setItem('otrack_offline', JSON.stringify(logs)); renderHistory(); updateStorageCalc();
+            const logs = JSON.parse(localStorage.getItem(`${activeProfile}_otrack_offline`) || '[]'); const deletedTotal = logs[idx].total;
+            if (currentBonAwal > 0) { currentBonTerbayar = Math.max(0, currentBonTerbayar - deletedTotal); localStorage.setItem(`${activeProfile}_otrack_bon_terbayar`, currentBonTerbayar); }
+            logs.splice(idx, 1); localStorage.setItem(`${activeProfile}_otrack_offline`, JSON.stringify(logs)); renderHistory(); updateStorageCalc();
         }
 
         function exportReport(tQty, tMoney) {
             const now = new Date(); const t = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }); const d = now.toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' });
-            let txt = `*LAPORAN O-TRACK*\nTanggal: ${d}\nJam: ${t} WIB\n\n- Total ${currentUnit}: ${tQty} ${currentUnit}\n- Total Estimasi: ${formatRp(tMoney)}`;
+            let txt = `*LAPORAN O-TRACK (Akun: ${document.getElementById('profile-select').options[document.getElementById('profile-select').selectedIndex].text})*\nTanggal: ${d}\nJam: ${t} WIB\n\n- Total ${currentUnit}: ${tQty} ${currentUnit}\n- Total Estimasi: ${formatRp(tMoney)}`;
             if (currentBonAwal > 0) { let sisa = Math.max(0, currentBonAwal - currentBonTerbayar); txt += `\n\n*STATUS BON*\n- Bon Awal: ${formatRp(currentBonAwal)}\n- Terbayar: ${formatRp(currentBonTerbayar)}\n- Sisa Bon: ${formatRp(sisa)}`; }
             txt += `\n\n_Generated by O-Track_`;
 
@@ -329,9 +341,8 @@
         }
 
         function renderHistory() {
-            const logs = JSON.parse(localStorage.getItem('otrack_offline') || '[]'); const safeUnit = escapeHTML(currentUnit); let h = '';
+            const logs = JSON.parse(localStorage.getItem(`${activeProfile}_otrack_offline`) || '[]'); const safeUnit = escapeHTML(currentUnit); let h = '';
 
-            /* EXTRACTING TODAY'S STATS VISUALLY */
             const todayStr = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' });
             let tdQty = 0; let tdMoney = 0;
             logs.forEach(i => { if (i.datetime && i.datetime.startsWith(todayStr)) { tdQty += i.val; tdMoney += i.total; } });
@@ -340,7 +351,6 @@
             const tRpEl = document.getElementById('today-rp-val');
             if (tQtyEl) tQtyEl.innerText = `${tdQty} ${safeUnit}`;
             if (tRpEl) tRpEl.innerText = formatRp(tdMoney);
-            /* END TODAY STATS VISUAL UPDATE */
 
             if (currentBonAwal > 0) {
                 let sisaBon = Math.max(0, currentBonAwal - currentBonTerbayar);
@@ -379,8 +389,15 @@
         }
 
         function backupData() {
-            const db = { price: localStorage.getItem('otrack_price'), unit: localStorage.getItem('otrack_unit'), history: localStorage.getItem('otrack_offline'), bonAwal: localStorage.getItem('otrack_bon_awal'), bonTerbayar: localStorage.getItem('otrack_bon_terbayar') };
-            const blob = new Blob([JSON.stringify(db)], { type: "application/json" }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = `OTrack_Backup_${new Date().toISOString().slice(0,10)}.json`; a.click(); URL.revokeObjectURL(url); 
+            // Backup spesifik untuk akun yang aktif aja, biar ga ketuker-tuker
+            const db = { 
+                price: localStorage.getItem(`${activeProfile}_otrack_price`), 
+                unit: localStorage.getItem(`${activeProfile}_otrack_unit`), 
+                history: localStorage.getItem(`${activeProfile}_otrack_offline`), 
+                bonAwal: localStorage.getItem(`${activeProfile}_otrack_bon_awal`), 
+                bonTerbayar: localStorage.getItem(`${activeProfile}_otrack_bon_terbayar`) 
+            };
+            const blob = new Blob([JSON.stringify(db)], { type: "application/json" }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = `OTrack_${activeProfile}_Backup_${new Date().toISOString().slice(0,10)}.json`; a.click(); URL.revokeObjectURL(url); 
             showToast('BACKUP BERHASIL');
             if(document.getElementById('settings-modal').classList.contains('show')) toggleSettings();
         }
@@ -392,12 +409,16 @@
             r.onload = function(ev) {
                 try { 
                     const d = JSON.parse(ev.target.result); 
-                    if (d.price) localStorage.setItem('otrack_price', d.price); if (d.unit) localStorage.setItem('otrack_unit', d.unit); if (d.history) localStorage.setItem('otrack_offline', d.history); 
-                    if (d.bonAwal) localStorage.setItem('otrack_bon_awal', d.bonAwal); if (d.bonTerbayar) localStorage.setItem('otrack_bon_terbayar', d.bonTerbayar);
+                    if (d.price) localStorage.setItem(`${activeProfile}_otrack_price`, d.price); 
+                    if (d.unit) localStorage.setItem(`${activeProfile}_otrack_unit`, d.unit); 
+                    if (d.history) localStorage.setItem(`${activeProfile}_otrack_offline`, d.history); 
+                    if (d.bonAwal) localStorage.setItem(`${activeProfile}_otrack_bon_awal`, d.bonAwal); 
+                    if (d.bonTerbayar) localStorage.setItem(`${activeProfile}_otrack_bon_terbayar`, d.bonTerbayar);
+                    
                     currentPrice = parseInt(d.price) || 7200; currentUnit = d.unit || 'Karung'; currentBonAwal = parseInt(d.bonAwal) || 0; currentBonTerbayar = parseInt(d.bonTerbayar) || 0;
                     updateSettingsDisplay(); renderHistory(); updateStorageCalc(); showToast('RESTORE BERHASIL'); 
                     if(document.getElementById('settings-modal').classList.contains('show')) toggleSettings();
-                } catch (err) { alert('Gagal!'); } e.target.value = '';
+                } catch (err) { alert('Gagal! File ga valid.'); } e.target.value = '';
             }; r.readAsText(f);
         }
 
@@ -425,15 +446,14 @@
         function confirmWipe() {
             const btn = document.getElementById('btn-wipe');
             if (wipeStep === 0) {
-                btn.innerText = "Yakin? Tap sekali lagi!"; btn.classList.add('confirm'); wipeStep = 1;
+                btn.innerText = "Yakin? Hapus SEMUA akun lho!"; btn.classList.add('confirm'); wipeStep = 1;
                 setTimeout(() => { resetWipeBtn(); }, 4000); 
             } else {
                 localStorage.clear(); location.reload(); 
             }
         }
-        function resetWipeBtn() { const btn = document.getElementById('btn-wipe'); btn.innerText = "Wipe All Data"; btn.classList.remove('confirm'); wipeStep = 0; }
+        function resetWipeBtn() { const btn = document.getElementById('btn-wipe'); btn.innerText = "Wipe Data (Semua Akun)"; btn.classList.remove('confirm'); wipeStep = 0; }
     </script>
 </body>
 </html>
-
 
